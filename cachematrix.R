@@ -9,6 +9,7 @@
 
 makeCacheMatrix <- function(x = matrix()) {
         xInv <- NULL
+        PreviousX <- x
         # define set function
         set <- function(matrx) {
                 x <<- matrx
@@ -33,11 +34,12 @@ makeCacheMatrix <- function(x = matrix()) {
 ## This function computes the inverse of the special "matrix"
 ## returned by makeCacheMatrix above. If the inverse has 
 ## already been calculated (and the matrix has not changed), 
-## then the cachesolve should retrieve the inverse from the cache.
+## then the cachesolve retrieves the inverse from the cache.
 cacheSolve <- function(x, ...) {
         xInv <- x$getInv()
-        # if already there return the inverse matrix
-        if(!is.null(xInv)) {
+        # if already there and matrix x is same as last time 
+        # return the inverse matrix from cache
+        if(!is.null(xInv) && (x==PreviousX)) {
                 message("Getting inverse matrix")
                 return (xInv)
         }
