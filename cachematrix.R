@@ -43,9 +43,9 @@ cacheSolve <- function(x, ...) {
                 message("Getting inverse matrix")
                 return (xInv)
         }
-        # if NOT already there, get the matrix & compute its inverse
+        # if the matrix is NOT already there, get the matrix & compute its inverse
         xmatrix <- x$get()
-        xInv <- solve(xmatrix) # inverse the matrix
+        xInv <- solve(xmatrix) # then inverse the matrix
         x$setInv(xInv)
         ## Return the matrix that is the inverse of 'x'
         xInv
